@@ -20,7 +20,7 @@ ADMINS.append(1032438381)
 ADMINS.append(964915467)
 #  Optionnal variables
 LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001935351726")) 
-UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "REMOVIESOFFICIAL") # For Force Subscription
+UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "teamuhdbackup1") # For Force Subscription
 BROADCAST_AS_COPY = os.environ.get('BROADCAST_AS_COPY', "True") # true if forward should be avoided
 WELCOME_IMAGE = os.environ.get("WELCOME_IMAGE", 'https://graph.org/file/64e817b1888bc0fe8ebc4.jpg') # image when someone hit /start # image when someone hit /start
 LINK_BYPASS = "True"
