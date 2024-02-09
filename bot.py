@@ -1,4 +1,3 @@
-
 import asyncio
 import datetime
 import logging
@@ -11,19 +10,36 @@ from database import *
 from database.users import *
 from helpers import *
 from pyshorteners import *
+
+# Configure logging
 logging.config.fileConfig('logging.conf')
 logging.getLogger().setLevel(logging.INFO)
-import os
-import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# Setup logger
 logger = logging.getLogger(__name__)
 
+async def start(client):
+    me = await client.get_me()
+    client.owner = await client.get_users(int(OWNER_ID))
+    client.username = f'@{me.username}'
+    temp.BOT_USERNAME = me.username
+    temp.FIRST_NAME = me.first_name
+    if not await db.get_bot_stats():
+        await db.create_stats()
+    banned_users = await filter_users({"banned": True})
+    async for user in banned_users:
+        temp.BANNED_USERS.append(user["user_id"])
+    logging.info(LOG_STR)
+    await broadcast_admins(client, '** Bot started successfully **\n\nBot By @DKBOTZ')
+    logging.info('Bot started')
 
-if __name__ == "__main__" :
+async def stop(client):
+    await client.stop()
+    logging.info("Bot stopped. Bye.")
 
+if __name__ == "__main__":
+    # Initialize client and plugins
     plugins = dict(
         root="plugins"
     )
@@ -34,28 +50,10 @@ if __name__ == "__main__" :
         api_hash=API_HASH,
         plugins=plugins
     )
-    
-    async def start(self):
-        me = await self.get_me()
-        self.owner = await self.get_users(int(OWNER_ID))
-        self.username = f'@{me.username}'
-        temp.BOT_USERNAME = me.username
-        temp.FIRST_NAME = me.first_name
-        if not await db.get_bot_stats():
-            await db.create_stats()
-        banned_users = await filter_users({"banned": True})
-        async for user in banned_users:
-            temp.BANNED_USERS.append(user["user_id"])
-        logging.info(LOG_STR)
-        await broadcast_admins(self, '** Bot started successfully **\n\nBot By @DKBOTZ')
-        logging.info('Bot started')
 
+    # Register start and stop handlers
+    dkbotz.start = start
+    dkbotz.stop = stop
 
+    # Run the client
     dkbotz.run()
-
-
-
-    async def stop(self, *args):
-        await super().stop()
-        logging.info("Bot stopped. Bye.")
-
