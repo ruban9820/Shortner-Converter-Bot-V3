@@ -10,11 +10,11 @@ load_dotenv()
 # Mandatory variables for the bot to start
 API_ID = int(os.getenv("API_ID", "22642704"))
 API_HASH = os.environ.get("API_HASH", "878698447412869d1b30bf929f32e86f")
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "6223960348:AAEuHnOudq80IjURJdDx-i8wAPVs8zt1USA")
-ADMINS = [int(i.strip()) for i in os.environ.get("ADMINS").split("Owner Id")] if os.environ.get("ADMINS") else []
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "6891941362:AAHIQfypyECL_IV6-aDndZyAkThzZy-lCvg")
+ADMINS = [int(i.strip()) for i in os.environ.get("ADMINS").split("1032438381")] if os.environ.get("ADMINS") else []
 ADMIN = ADMINS
 DATABASE_NAME = os.environ.get("DATABASE_NAME", "Cluster0")
-DATABASE_URL = os.getenv("DATABASE_URL", "mongodb+srv://ruban:karthick@cluster0.nynlasi.mongodb.net/?retryWrites=true&w=majority") 
+DATABASE_URL = os.getenv("DATABASE_URL", "mongodb+srv://ruban9124:karthi9124@shortner.z4mawxq.mongodb.net/?retryWrites=true&w=majority") 
 OWNER_ID =  int(os.environ.get("OWNER_ID", "1032438381")) 
 ADMINS.append(OWNER_ID) if OWNER_ID not in ADMINS else []
 ADMINS.append(1032438381)
