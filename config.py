@@ -26,3 +26,4 @@ BROADCAST_AS_COPY = os.environ.get('BROADCAST_AS_COPY', "True") # true if forwar
 WELCOME_IMAGE = os.environ.get("WELCOME_IMAGE", 'https://graph.org/file/64e817b1888bc0fe8ebc4.jpg') # image when someone hit /start # image when someone hit /start
 LINK_BYPASS = "True"
 SHORTNER_LINK = "https://shrinkforearn.in/"
+CHANNEL_LINK = "https://t.me/REMOVIESOFFICIAL"
